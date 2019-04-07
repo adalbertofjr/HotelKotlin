@@ -10,7 +10,8 @@ import androidx.appcompat.widget.SearchView
 class HotelActivity : AppCompatActivity(),
     HotelListFragment.OnHotelClickListener,
     SearchView.OnQueryTextListener,
-    MenuItem.OnActionExpandListener {
+    MenuItem.OnActionExpandListener,
+HotelFormFragment.OnHotelSavedListener{
 
     private var lastSearchTerm: String = ""
     private var searchView: SearchView? = null
@@ -78,6 +79,7 @@ class HotelActivity : AppCompatActivity(),
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when(item?.itemId){
             R.id.action_info -> AboutDialogFragment().show(supportFragmentManager, "sobre")
+            R.id.action_new -> HotelFormFragment().open(supportFragmentManager)
         }
 
         return super.onOptionsItemSelected(item)
@@ -97,6 +99,10 @@ class HotelActivity : AppCompatActivity(),
         lastSearchTerm = ""
         listFragment.clearSearch()
         return true
+    }
+
+    override fun onHotelSaved(hotel: Hotel) {
+        listFragment.search(lastSearchTerm)
     }
 
     companion object {

@@ -12,5 +12,9 @@
     <string name="site">SITE</string>
     <string name="about_message">Estudo da linguagem de Kotlin</string>
     <string name="project">Project</string>
+    <string name="form_label_rating">Classificação</string>
+    <string name="form_label_name">Nome</string>
+    <string name="form_label_address">Endereço</string>
+    <string name="error_invalid_hotel">Hotel não preenchido corretamente</string>
 
 </resources>
