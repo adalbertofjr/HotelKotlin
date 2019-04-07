@@ -76,6 +76,10 @@ class HotelActivity : AppCompatActivity(),
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item?.itemId){
+            R.id.action_info -> AboutDialogFragment().show(supportFragmentManager, "sobre")
+        }
+
         return super.onOptionsItemSelected(item)
     }
 

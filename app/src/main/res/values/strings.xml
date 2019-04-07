@@ -7,5 +7,10 @@
     <string name="action_new_label">Novo Hotel</string>
     <string name="action_info">Info</string>
     <string name="hint_search">Procurar por hotel</string>
-    
+    <string name="about_title">Hotel Kotlin</string>
+    <string name="ok">OK</string>
+    <string name="site">SITE</string>
+    <string name="about_message">Estudo da linguagem de Kotlin</string>
+    <string name="project">Project</string>
+
 </resources>
