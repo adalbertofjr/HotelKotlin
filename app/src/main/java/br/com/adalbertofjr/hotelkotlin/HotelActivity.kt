@@ -9,10 +9,12 @@ import androidx.appcompat.widget.SearchView
 
 class HotelActivity : AppCompatActivity(),
     HotelListFragment.OnHotelClickListener,
+    HotelListFragment.OnHotelDeletedListener,
     SearchView.OnQueryTextListener,
     MenuItem.OnActionExpandListener,
-HotelFormFragment.OnHotelSavedListener{
+    HotelFormFragment.OnHotelSavedListener {
 
+    private var hotelIdSelected: Long = -1
     private var lastSearchTerm: String = ""
     private var searchView: SearchView? = null
     private val listFragment: HotelListFragment by lazy {
@@ -27,14 +29,17 @@ HotelFormFragment.OnHotelSavedListener{
     override fun onSaveInstanceState(outState: Bundle?) {
         super.onSaveInstanceState(outState)
         outState?.putString(EXTRA_SEARCH_TERM, lastSearchTerm)
+        outState?.putLong(EXTRA_HOTEL_ID_SELECTED, hotelIdSelected)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        hotelIdSelected = savedInstanceState?.getLong(EXTRA_HOTEL_ID_SELECTED) ?: 0
         lastSearchTerm = savedInstanceState?.getString(EXTRA_SEARCH_TERM) ?: ""
     }
 
     override fun onHotelClick(hotel: Hotel) {
         if (isTablet()) {
+            hotelIdSelected = hotel.id
             showDetailsFragment(hotel.id)
         } else {
             showDetailsActivity(hotel.id)
@@ -77,7 +82,7 @@ HotelFormFragment.OnHotelSavedListener{
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when(item?.itemId){
+        when (item?.itemId) {
             R.id.action_info -> AboutDialogFragment().show(supportFragmentManager, "sobre")
             R.id.action_new -> HotelFormFragment().open(supportFragmentManager)
         }
@@ -105,7 +110,20 @@ HotelFormFragment.OnHotelSavedListener{
         listFragment.search(lastSearchTerm)
     }
 
+    override fun onHotelsDeleted(hotels: List<Hotel>) {
+        if (hotels.find { it.id == hotelIdSelected } != null){
+            val fragment = supportFragmentManager.findFragmentByTag(HotelDetailsFragment.TAG_DETAILS)
+            if (fragment != null){
+                supportFragmentManager
+                    .beginTransaction()
+                    .remove(fragment)
+                    .commit()
+            }
+        }
+    }
+
     companion object {
         private val EXTRA_SEARCH_TERM = "lastSearch"
+        private val EXTRA_HOTEL_ID_SELECTED = "lastSelectedId"
     }
 }
