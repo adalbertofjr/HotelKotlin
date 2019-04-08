@@ -38,12 +38,14 @@ object MemoryRepository : HotelRepository {
     }
 
     override fun search(term: String, callback: (List<Hotel>) -> Unit) {
+        var resultList = if (term.isEmpty()) {
+            hotelsList
+        } else {
+            hotelsList.filter { it.name.toUpperCase().contains(term.toUpperCase()) }
+        }
+
         callback(
-            if (term.isEmpty()) {
-                hotelsList
-            } else {
-                hotelsList.filter { it.name.toUpperCase().contains(term.toUpperCase()) }
-            }
+            resultList.sortedBy { it.name }
         )
     }
 }

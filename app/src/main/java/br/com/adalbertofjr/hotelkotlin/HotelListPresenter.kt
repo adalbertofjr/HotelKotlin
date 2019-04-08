@@ -7,6 +7,7 @@ class HotelListPresenter(
     private var lastTerm = ""
     private var inDeleteMode = false
     private val selectedItems = mutableListOf<Hotel>()
+    private val deletedItems = mutableListOf<Hotel>()
 
     fun init(){
         if (inDeleteMode){
@@ -66,9 +67,21 @@ class HotelListPresenter(
 
     fun deleteSelected(callback : (List<Hotel>) -> Unit){
         repository.remove(*selectedItems.toTypedArray())
+        deletedItems.clear()
+        deletedItems.addAll(selectedItems)
         refresh()
         callback(selectedItems)
         hideDeleteMode()
+        view.showMessageHotelsDeleted(deletedItems.size)
+    }
+
+    fun undoDelete(){
+        if (deletedItems.isNotEmpty()){
+            for (hotel in deletedItems){
+                repository.save(hotel)
+            }
+            searchHotels(lastTerm)
+        }
     }
 
     fun showHotelDetails(hotel: Hotel) {
