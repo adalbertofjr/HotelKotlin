@@ -9,14 +9,15 @@ import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
-import br.com.adalbertofjr.hotel.repository.memory.MemoryRepository
 import br.com.adalbertofjr.hotel.R
 import br.com.adalbertofjr.hotel.model.Hotel
+import br.com.adalbertofjr.hotel.repository.sqlite.SQLiteRepository
 import kotlinx.android.synthetic.main.fragment_hotel_form.*
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class HotelFormFragment : DialogFragment(), HotelFormView {
-    private val presenter =
-        HotelFormPresenter(this, MemoryRepository)
+    private val presenter: HotelFormPresenter by inject { parametersOf(this) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_hotel_form, container, false)
@@ -93,7 +94,7 @@ class HotelFormFragment : DialogFragment(), HotelFormView {
         private const val DIALOG_TAG = "edit_dialog"
         private const val EXTRA_HOTEL_ID = "hotel_id"
 
-        fun newInstance(hotelId: Long = 0) = HotelFormFragment().apply {
+        fun newInstance(hotelId: Long = 0L) = HotelFormFragment().apply {
             arguments = Bundle().apply { putLong(EXTRA_HOTEL_ID, hotelId) }
         }
     }

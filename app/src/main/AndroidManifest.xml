@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="br.com.adalbertofjr.hotel">
+    package="br.com.adalbertofjr.hotel">
 
     <application
-            android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:supportsRtl="true"
-            android:theme="@style/AppTheme">
-        <activity android:name="br.com.adalbertofjr.hotel.common.HotelActivity"
+        android:name=".root.HotelApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="br.com.adalbertofjr.hotel.common.HotelActivity"
             android:launchMode="singleTop">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="br.com.adalbertofjr.hotel.details.HotelDetailsActivity"
-            android:parentActivityName="br.com.adalbertofjr.hotel.common.HotelActivity"/>
+        <activity
+            android:name="br.com.adalbertofjr.hotel.details.HotelDetailsActivity"
+            android:parentActivityName="br.com.adalbertofjr.hotel.common.HotelActivity" />
     </application>
 
 </manifest>

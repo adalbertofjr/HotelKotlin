@@ -6,14 +6,15 @@ import android.view.*
 import androidx.appcompat.widget.ShareActionProvider
 import androidx.core.view.MenuItemCompat
 import androidx.fragment.app.Fragment
-import br.com.adalbertofjr.hotel.model.Hotel
-import br.com.adalbertofjr.hotel.repository.memory.MemoryRepository
 import br.com.adalbertofjr.hotel.R
+import br.com.adalbertofjr.hotel.model.Hotel
+import br.com.adalbertofjr.hotel.repository.sqlite.SQLiteRepository
 import kotlinx.android.synthetic.main.fragment_hotel_details.*
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class HotelDetailsFragment : Fragment(), HotelDetailsView {
-    private val presenter =
-        HotelDetailsPresenter(this, MemoryRepository)
+    private val presenter: HotelDetailsPresenter by inject { parametersOf(this) }
     private var hotel: Hotel? = null
     private var shareActionProvider: ShareActionProvider? = null
 
