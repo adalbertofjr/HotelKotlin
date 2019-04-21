@@ -1,4 +1,4 @@
-package br.com.adalbertofjr.hotelkotlin
+package br.com.adalbertofjr.hotel.common
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,12 @@ import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.SearchView
+import br.com.adalbertofjr.hotel.*
+import br.com.adalbertofjr.hotel.details.HotelDetailsActivity
+import br.com.adalbertofjr.hotel.details.HotelDetailsFragment
+import br.com.adalbertofjr.hotel.model.Hotel
+import br.com.adalbertofjr.hotel.form.HotelFormFragment
+import br.com.adalbertofjr.hotel.list.HotelListFragment
 import kotlinx.android.synthetic.main.activity_hotel.*
 
 class HotelActivity : AppCompatActivity(),
@@ -57,7 +63,10 @@ class HotelActivity : AppCompatActivity(),
         val fragment = HotelDetailsFragment.newInstance(hotelId)
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.details, fragment, HotelDetailsFragment.TAG_DETAILS)
+            .replace(
+                R.id.details, fragment,
+                HotelDetailsFragment.TAG_DETAILS
+            )
             .commit()
 
     }

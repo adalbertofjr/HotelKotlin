@@ -1,9 +1,10 @@
-package br.com.adalbertofjr.hotelkotlin
+package br.com.adalbertofjr.hotel.details
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import br.com.adalbertofjr.hotel.R
 
 class HotelDetailsActivity:AppCompatActivity(){
     private val hotelId:Long by lazy{ intent.getLongExtra(EXTRA_HOTEL_ID, -1)}
@@ -20,7 +21,10 @@ class HotelDetailsActivity:AppCompatActivity(){
         val fragment = HotelDetailsFragment.newInstance(hotelId)
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.details, fragment, HotelDetailsFragment.TAG_DETAILS)
+            .replace(
+                R.id.details, fragment,
+                HotelDetailsFragment.TAG_DETAILS
+            )
             .commit()
     }
 

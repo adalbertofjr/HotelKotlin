@@ -1,4 +1,6 @@
-package br.com.adalbertofjr.hotelkotlin
+package br.com.adalbertofjr.hotel.form
+
+import br.com.adalbertofjr.hotel.model.Hotel
 
 class HotelValidator {
     fun validate(info: Hotel) = with(info) {

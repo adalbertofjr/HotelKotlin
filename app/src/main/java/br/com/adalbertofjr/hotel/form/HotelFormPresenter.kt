@@ -1,5 +1,7 @@
-package br.com.adalbertofjr.hotelkotlin
+package br.com.adalbertofjr.hotel.form
 
+import br.com.adalbertofjr.hotel.repository.HotelRepository
+import br.com.adalbertofjr.hotel.model.Hotel
 import java.lang.Exception
 
 class HotelFormPresenter(private val view: HotelFormView, private val repository: HotelRepository) {

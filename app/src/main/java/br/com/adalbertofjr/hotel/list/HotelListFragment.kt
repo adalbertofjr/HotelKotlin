@@ -1,4 +1,4 @@
-package br.com.adalbertofjr.hotelkotlin
+package br.com.adalbertofjr.hotel.list
 
 import android.os.Bundle
 import android.view.Menu
@@ -10,13 +10,17 @@ import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ActionMode
 import androidx.fragment.app.ListFragment
+import br.com.adalbertofjr.hotel.repository.memory.MemoryRepository
+import br.com.adalbertofjr.hotel.R
+import br.com.adalbertofjr.hotel.model.Hotel
 import com.google.android.material.snackbar.Snackbar
 
 class HotelListFragment : ListFragment(),
     HotelListView,
     AdapterView.OnItemLongClickListener,
     ActionMode.Callback {
-    private val presenter: HotelListPresenter = HotelListPresenter(this, MemoryRepository)
+    private val presenter: HotelListPresenter =
+        HotelListPresenter(this, MemoryRepository)
     private var actionMode: androidx.appcompat.view.ActionMode? = null
 
 

@@ -1,4 +1,4 @@
-package br.com.adalbertofjr.hotelkotlin
+package br.com.adalbertofjr.hotel
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4

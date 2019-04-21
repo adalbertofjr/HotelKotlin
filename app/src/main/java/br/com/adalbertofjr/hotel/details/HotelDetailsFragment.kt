@@ -1,16 +1,19 @@
-package br.com.adalbertofjr.hotelkotlin
+package br.com.adalbertofjr.hotel.details
 
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.widget.ShareActionProvider
 import androidx.core.view.MenuItemCompat
 import androidx.fragment.app.Fragment
+import br.com.adalbertofjr.hotel.model.Hotel
+import br.com.adalbertofjr.hotel.repository.memory.MemoryRepository
+import br.com.adalbertofjr.hotel.R
 import kotlinx.android.synthetic.main.fragment_hotel_details.*
 
 class HotelDetailsFragment : Fragment(), HotelDetailsView {
-    private val presenter = HotelDetailsPresenter(this, MemoryRepository)
+    private val presenter =
+        HotelDetailsPresenter(this, MemoryRepository)
     private var hotel: Hotel? = null
     private var shareActionProvider: ShareActionProvider? = null
 

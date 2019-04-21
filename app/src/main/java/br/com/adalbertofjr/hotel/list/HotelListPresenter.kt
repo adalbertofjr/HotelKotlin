@@ -1,4 +1,7 @@
-package br.com.adalbertofjr.hotelkotlin
+package br.com.adalbertofjr.hotel.list
+
+import br.com.adalbertofjr.hotel.repository.HotelRepository
+import br.com.adalbertofjr.hotel.model.Hotel
 
 class HotelListPresenter(
     private val view: HotelListView,

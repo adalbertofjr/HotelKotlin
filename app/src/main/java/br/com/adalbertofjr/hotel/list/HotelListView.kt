@@ -1,4 +1,6 @@
-package br.com.adalbertofjr.hotelkotlin
+package br.com.adalbertofjr.hotel.list
+
+import br.com.adalbertofjr.hotel.model.Hotel
 
 interface HotelListView {
     fun showHotels(hotels: List<Hotel>)

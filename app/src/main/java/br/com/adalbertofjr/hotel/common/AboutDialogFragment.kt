@@ -1,4 +1,4 @@
-package br.com.adalbertofjr.hotelkotlin
+package br.com.adalbertofjr.hotel.common
 
 import android.app.Dialog
 import android.content.DialogInterface
@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
+import br.com.adalbertofjr.hotel.R
 
 class AboutDialogFragment : DialogFragment() {
 

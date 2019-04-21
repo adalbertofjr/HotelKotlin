@@ -1,4 +1,4 @@
-package br.com.adalbertofjr.hotelkotlin
+package br.com.adalbertofjr.hotel.form
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,10 +9,14 @@ import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
+import br.com.adalbertofjr.hotel.repository.memory.MemoryRepository
+import br.com.adalbertofjr.hotel.R
+import br.com.adalbertofjr.hotel.model.Hotel
 import kotlinx.android.synthetic.main.fragment_hotel_form.*
 
 class HotelFormFragment : DialogFragment(), HotelFormView {
-    private val presenter = HotelFormPresenter(this, MemoryRepository)
+    private val presenter =
+        HotelFormPresenter(this, MemoryRepository)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_hotel_form, container, false)

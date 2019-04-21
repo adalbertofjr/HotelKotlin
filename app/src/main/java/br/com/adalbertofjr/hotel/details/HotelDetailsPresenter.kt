@@ -1,8 +1,11 @@
-package br.com.adalbertofjr.hotelkotlin
+package br.com.adalbertofjr.hotel.details
+
+import br.com.adalbertofjr.hotel.repository.HotelRepository
 
 class HotelDetailsPresenter(
-    private val view:HotelDetailsView,
-    private val repository: HotelRepository) {
+    private val view: HotelDetailsView,
+    private val repository: HotelRepository
+) {
 
     fun loadHotelDetails(id: Long){
         repository.hotelById(id){

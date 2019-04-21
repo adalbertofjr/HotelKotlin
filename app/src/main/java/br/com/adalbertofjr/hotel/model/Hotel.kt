@@ -1,4 +1,4 @@
-package br.com.adalbertofjr.hotelkotlin
+package br.com.adalbertofjr.hotel.model
 
 data class Hotel(
     var id: Long = 0,

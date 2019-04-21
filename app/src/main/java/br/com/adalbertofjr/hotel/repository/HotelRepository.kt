@@ -1,4 +1,6 @@
-package br.com.adalbertofjr.hotelkotlin
+package br.com.adalbertofjr.hotel.repository
+
+import br.com.adalbertofjr.hotel.model.Hotel
 
 interface HotelRepository {
     fun save(hotel: Hotel)
