@@ -10,8 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <provider
+            android:name=".repository.sqlite.HotelKotlinProvider"
+            android:authorities="br.com.adalbertofjr.hotel"
+            android:enabled="true"
+            android:exported="true"/>
+
         <activity
-            android:name="br.com.adalbertofjr.hotel.common.HotelActivity"
+            android:name=".common.HotelActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,8 +26,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="br.com.adalbertofjr.hotel.details.HotelDetailsActivity"
-            android:parentActivityName="br.com.adalbertofjr.hotel.common.HotelActivity" />
+            android:name=".details.HotelDetailsActivity"
+            android:parentActivityName=".common.HotelActivity" />
     </application>
 
 </manifest>

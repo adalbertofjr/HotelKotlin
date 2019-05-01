@@ -7,6 +7,7 @@ import br.com.adalbertofjr.hotel.form.HotelFormView
 import br.com.adalbertofjr.hotel.list.HotelListPresenter
 import br.com.adalbertofjr.hotel.list.HotelListView
 import br.com.adalbertofjr.hotel.repository.HotelRepository
+import br.com.adalbertofjr.hotel.repository.sqlite.ProviderRepository
 import br.com.adalbertofjr.hotel.repository.sqlite.SQLiteRepository
 import org.koin.dsl.module
 
@@ -14,7 +15,7 @@ val androidModule = module {
 
     single { this }
     single {
-        SQLiteRepository(context = get()) as HotelRepository
+        ProviderRepository(ctx = get()) as HotelRepository
     }
 
     factory { (view: HotelListView) ->
